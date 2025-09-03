@@ -29,8 +29,8 @@ An assignment repository for automating login page using Playwright. Using "http
 
 ## Prerequisites
 Install
+
     Node.js (version 14 or above)
-    
     Visual Studio Code (VS Code) IDE
 
 ## Installation
@@ -52,14 +52,12 @@ Install
     - Run test by title:
         npx playwright test -g "Test Case"
     - Run test by title with specific project:
-        npx playwright test -g "Test Case" --project=chromium
+        npx playwright test -g "Test Case" --project=assignment
     
 ## Project-Structure
     ├── tests/              # Test files
     |   └── Login          # Input Module
     │       └── login-test-suite.spec.ts # test script file
-    ├── auth/               # Auth files
-    |   └── auth.setup.ts   # Auth setup Module
     ├── views/              # Page Object Model (Locators)
     |   └── Login
     │       └── login-views.ts # locators for Input page   
