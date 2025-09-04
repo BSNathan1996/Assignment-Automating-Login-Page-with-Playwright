@@ -24,8 +24,8 @@ export class LoginData {
         "validMsg": "Congratulations student. You successfully logged in!"
     }
 
-    static readonly validCredSuccessPage: Dictionary<string> = {
-        "successPage": "https://practicetestautomation.com/logged-in-successfully/"
+    static readonly loginPageURL: Dictionary<string> = {
+        "baseUrl": "https://practicetestautomation.com/practice-test-login/"
     }
 
     static readonly loginPageTitle: Dictionary<string> = {
@@ -36,11 +36,9 @@ export class LoginData {
         "title": "Logged In Successfully | Practice Test Automation"
     }
     
-    static readonly successPageHeader: Dictionary<string> = {
-        "header": "Logged In Successfully"
-    }
-
-    static readonly successPageAccount: Dictionary<string> = {
+    static readonly successPageElem: Dictionary<string> = {
+        "successPageURL": "https://practicetestautomation.com/logged-in-successfully/",
+        "header": "Logged In Successfully",
         "msg": `Congratulations ${LoginData.validCred.username}. You successfully logged in!`
     }
 }

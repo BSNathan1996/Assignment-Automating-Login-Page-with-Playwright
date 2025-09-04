@@ -64,3 +64,30 @@ TestLoginFeature("Test Case 7: Verify user is displayed with error message when 
     await loginAction.verifyPasswordData(LoginData.validCred);
     await loginAction.verifySubmitInvalidCred(LoginData.blankErrorMsg);
 });
+
+// Positive Test Case
+TestLoginFeature("Test Case 8: Verify the success page title when clicked on Submit button with valid credentials UserName" , async ({base, loginAction}) => {
+    await base.navigateLoginPage();
+    await loginAction.verifyUserNameData(LoginData.validCred);
+    await loginAction.verifyPasswordData(LoginData.validCred);
+    await loginAction.verifySubmitButton();
+    await loginAction.verifySuccessPageTitle(LoginData.SuccessPageTitle);
+});
+
+// Positive Test Case
+TestLoginFeature("Test Case 9: Verify the success page elements present ", async ({base, loginAction}) => {
+    await base.navigateLoginPage();
+    await loginAction.verifyUserNameData(LoginData.validCred);
+    await loginAction.verifyPasswordData(LoginData.validCred);
+    await loginAction.verifySubmitButton();
+    await loginAction.verifySuccessPageElement(LoginData.successPageElem);
+});
+
+// Positive Test Case
+TestLoginFeature("Test Case 10: Verify user is redirected to login page after clicking on logout button " , async ({base, loginAction}) => {
+    await base.navigateLoginPage();
+    await loginAction.verifyUserNameData(LoginData.validCred);
+    await loginAction.verifyPasswordData(LoginData.validCred);
+    await loginAction.verifySubmitButton();
+    await loginAction.verifyLogoutFunctionality(LoginData.loginPageURL);
+});

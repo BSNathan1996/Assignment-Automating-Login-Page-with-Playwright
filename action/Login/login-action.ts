@@ -1,6 +1,6 @@
 import { expect, Page } from "@playwright/test";
 import { Dictionary, helper } from "../../common/helper";
-import { loginViews } from "../../views/Login/login-views";
+import { loginSuccessViews, loginViews } from "../../views/Login/login-views";
 
 export class LoginAction {
     readonly page: Page;
@@ -28,7 +28,7 @@ export class LoginAction {
         passwordTextBox.fill(testData.password);
     }
 
-    public async verifySubmitButton(testData: Dictionary<string>){
+    public async verifySubmitButton(){
         const submitButton = await this.page.locator(loginViews.submitButton);
         await submitButton.click();
     }
@@ -54,5 +54,28 @@ export class LoginAction {
         await this.helper.isVisible(loginViews.userNameTextBox);
         await this.helper.isVisible(loginViews.passwordTextBox);
         await this.helper.isEnabled(loginViews.submitButton);
+    }
+
+    public async verifySuccessPageTitle(testData:Dictionary<string>){
+        const title = await this.page.title();
+        await expect(title).toBe(testData.title);
+    }
+
+    public async verifySuccessPageElement(testData: Dictionary<string>){
+        await expect(this.page.url()).toBe(testData.successPageURL);
+        await this.helper.textMatch(loginSuccessViews.successfullLoginHeaderByClass, testData.header);
+        await this.helper.textMatch(loginSuccessViews.successAccoutMsgByClass, testData.msg);
+        const logoutBtn = await this.page.locator('a').filter({
+            hasText: loginSuccessViews.logoutButtonByText
+        });
+        await expect(logoutBtn).toBeVisible();
+    }
+
+    public async verifyLogoutFunctionality(testData: Dictionary<string>){
+        const logoutBtn = await this.page.locator('a').filter({
+            hasText: loginSuccessViews.logoutButtonByText
+        });
+        await logoutBtn.click();
+        await expect(this.page.url()).toBe(testData.baseUrl);
     }
 }

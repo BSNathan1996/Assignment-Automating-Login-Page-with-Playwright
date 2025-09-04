@@ -21,6 +21,11 @@ export class helper {
         const isElementEnabled = await this.page.locator(element);
         await expect(isElementEnabled).toBeEnabled();
     }
+
+    public async textMatch(element: string, text: string){
+        const textOf = await this.page.locator(element);
+        await expect(textOf).toHaveText(text);
+    }
 }
 export interface Dictionary<T> {
     [key: string]: T;

@@ -1,4 +1,5 @@
 import { Page } from "@playwright/test";
+import { LoginData } from "../../test-data/Login/testData-login";
 
 export class BaseAction {
     readonly page: Page;
@@ -8,7 +9,7 @@ export class BaseAction {
     }
 
     public async navigateLoginPage() {
-        await this.page.goto("https://practicetestautomation.com/practice-test-login/");
+        await this.page.goto(LoginData.loginPageURL.baseUrl);
         await this.page.waitForLoadState();
     }
 }
