@@ -18,39 +18,51 @@ export const TestLoginFeature = base.extend<userFixture>({
 });
 
 // Posive Test Case
-TestLoginFeature("Test Case 1: Verify user is navigated to login page", async ({base, loginAction}) => {
+TestLoginFeature("Test Case 1: Verify user is navigated to login page",{
+    tag: '@positive'
+}, async ({base, loginAction}) => {
     await base.navigateLoginPage();
     await loginAction.verifyTitleLoginPage(LoginData.loginPageTitle);
 });
 
 // Posive Test Case
-TestLoginFeature("Test Case 2: Verify user is displayed with username and password text field in the login page", async ({base, loginAction}) => {
+TestLoginFeature("Test Case 2: Verify user is displayed with username and password text field in the login page",{
+    tag: '@positive'
+}, async ({base, loginAction}) => {
     await base.navigateLoginPage();
     await loginAction.verifyLoginPageElement()
 });
 
 // Negative Test Case
-TestLoginFeature("Test Case 3: Verify user is displayed with error message when clicked on Submit button without entering username and password", async ({base, loginAction}) => {
+TestLoginFeature("Test Case 3: Verify user is displayed with error message when clicked on Submit button without entering username and password",{
+    tag: '@negative'
+}, async ({base, loginAction}) => {
     await base.navigateLoginPage();
     await loginAction.verifySubmitError(LoginData.blankErrorMsg);
 });
 
 // Negative Test Case
-TestLoginFeature("Test Case 4: Verify user is displayed with error message when clicked on Submit button without entering username", async ({base, loginAction}) => {
+TestLoginFeature("Test Case 4: Verify user is displayed with error message when clicked on Submit button without entering username",{
+    tag: '@negative'
+}, async ({base, loginAction}) => {
     await base.navigateLoginPage();
     await loginAction.verifyPasswordData(LoginData.validCred);
     await loginAction.verifySubmitError(LoginData.blankErrorMsg);
 });
 
 // Negative Test Case
-TestLoginFeature("Test Case 5: Verify user is displayed with error message when clicked on Submit button without entering password", async ({base, loginAction}) => {
+TestLoginFeature("Test Case 5: Verify user is displayed with error message when clicked on Submit button without entering password",{
+    tag: '@negative'
+}, async ({base, loginAction}) => {
     await base.navigateLoginPage();
     await loginAction.verifyUserNameData(LoginData.validCred);
     await loginAction.verifySubmitError(LoginData.invalidPassMsg);
 });
 
 // Negative Test Case
-TestLoginFeature("Test Case 6: Verify user is displayed with error message when clicked on Submit button with Invalid Password", async ({base, loginAction}) => {
+TestLoginFeature("Test Case 6: Verify user is displayed with error message when clicked on Submit button with Invalid Password",{
+    tag: '@negative'
+}, async ({base, loginAction}) => {
     await base.navigateLoginPage();
     await loginAction.verifyUserNameData(LoginData.validCred);
     await loginAction.verifyPasswordData(LoginData.inValidCred);
@@ -58,7 +70,9 @@ TestLoginFeature("Test Case 6: Verify user is displayed with error message when 
 });
 
 // Negative Test Case
-TestLoginFeature("Test Case 7: Verify user is displayed with error message when clicked on Submit button with Invalid UserName", async ({base, loginAction}) => {
+TestLoginFeature("Test Case 7: Verify user is displayed with error message when clicked on Submit button with Invalid UserName",{
+    tag: '@negative'
+}, async ({base, loginAction}) => {
     await base.navigateLoginPage();
     await loginAction.verifyUserNameData(LoginData.inValidCred);
     await loginAction.verifyPasswordData(LoginData.validCred);
@@ -66,7 +80,9 @@ TestLoginFeature("Test Case 7: Verify user is displayed with error message when 
 });
 
 // Positive Test Case
-TestLoginFeature("Test Case 8: Verify the success page title when clicked on Submit button with valid credentials UserName" , async ({base, loginAction}) => {
+TestLoginFeature("Test Case 8: Verify the success page title when clicked on Submit button with valid credentials UserName",{
+    tag: '@positive'
+}, async ({base, loginAction}) => {
     await base.navigateLoginPage();
     await loginAction.verifyUserNameData(LoginData.validCred);
     await loginAction.verifyPasswordData(LoginData.validCred);
@@ -75,7 +91,9 @@ TestLoginFeature("Test Case 8: Verify the success page title when clicked on Sub
 });
 
 // Positive Test Case
-TestLoginFeature("Test Case 9: Verify the success page elements present ", async ({base, loginAction}) => {
+TestLoginFeature("Test Case 9: Verify the success page elements present ",{
+    tag: '@positive'
+}, async ({base, loginAction}) => {
     await base.navigateLoginPage();
     await loginAction.verifyUserNameData(LoginData.validCred);
     await loginAction.verifyPasswordData(LoginData.validCred);
@@ -84,7 +102,9 @@ TestLoginFeature("Test Case 9: Verify the success page elements present ", async
 });
 
 // Positive Test Case
-TestLoginFeature("Test Case 10: Verify user is redirected to login page after clicking on logout button " , async ({base, loginAction}) => {
+TestLoginFeature("Test Case 10: Verify user is redirected to login page after clicking on logout button ",{
+    tag: '@positive'
+}, async ({base, loginAction}) => {
     await base.navigateLoginPage();
     await loginAction.verifyUserNameData(LoginData.validCred);
     await loginAction.verifyPasswordData(LoginData.validCred);
